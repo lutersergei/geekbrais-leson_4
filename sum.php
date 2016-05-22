@@ -6,6 +6,7 @@
 </head>
 <?php
 error_reporting(E_ALL);
+$option_array=[1=>"+",2=>"-",3=>"*",4=>"/"];
 define('ERROR_DIVISION_BY_ZERO',"zero" );
 $a="";
 $b="";
@@ -41,10 +42,16 @@ if(isset($_POST['a']) && isset($_POST['b']))
     <label for="first_number">Первое число</label>
     <input type="text" name="a" id="first_number" value="<?php echo $a ?>"/>
     <select name="operator" id="operator">
-        <option value="1">+</option>
-        <option value="2">-</option>
-        <option value="3">*</option>
-        <option value="4">/</option>
+        <?php
+        for ($i=1; $i<5; $i++)
+        {
+            if ($i==$_POST['operator'])
+            {
+                echo "<option selected value=\"$i\">$option_array[$i]</option>";
+            }
+            else echo "<option value=\"$i\">$option_array[$i]</option>";
+        }
+        ?>
     </select>
     <label for="second_number">Второе число</label>
     <input type="text" name="b" id="second_number" value="<?php echo $b ?>"/>
