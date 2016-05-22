@@ -5,7 +5,7 @@ $a="";
 $b="";
 $result = "";
 $operator_array=[1=>"+",2=>"-",3=>"*",4=>"/"];
-//var_dump($_POST);
+var_dump($_POST);
 $operator="";
 if (isset($_POST['operator']) && isset($_POST['a']) && isset($_POST['b']))
 {
@@ -38,7 +38,7 @@ if (isset($_POST['operator']) && isset($_POST['a']) && isset($_POST['b']))
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Lesson_4</title>
+    <title>Продвинутый калькулятор</title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -64,7 +64,7 @@ if (isset($_POST['operator']) && isset($_POST['a']) && isset($_POST['b']))
             </tr>
             <tr>
                 <td><?php
-                    for ($i=1; $i<5; $i++)
+                    for ($i=1; $i<=4; $i++)
                     {
                         echo "<input type=\"submit\" value=\"$operator_array[$i]\" name=\"operator\" />";
                     }

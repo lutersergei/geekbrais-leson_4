@@ -6,10 +6,11 @@
 </head>
 <?php
 error_reporting(E_ALL);
+var_dump($_POST);
 $operator_array=[1=>"+",2=>"-",3=>"*",4=>"/"];
 define('ERROR_DIVISION_BY_ZERO',"zero" );
-$a="";
-$b="";
+$a=false;
+$b=false;
 $result = "";
 if(isset($_POST['a']) && isset($_POST['b']))
 {
@@ -59,7 +60,7 @@ if(isset($_POST['a']) && isset($_POST['b']))
                 <td><input type="text" name="a" id="first_number" placeholder="Введите первое число" value="<?php echo $a ?>"/></td>
                 <td><select name="operator" id="operator">
                         <?php
-                        for ($i=1; $i<5; $i++)
+                        for ($i=1; $i<=4; $i++)
                         {
                             if ($i==$_POST['operator'])
                             {
