@@ -14,6 +14,7 @@ $image_description=[1 => "Мост днем", 2 => "Мост ночью",3 => "�
     <ul class="nav nav-tabs">
         <li role="presentation"><a href="index.php">Главная</a></li>
         <li role="presentation"><a href="sum.php">Калькулятор</a></li>
+        <li role="presentation"><a href="calculator.php">Продвинутый калькулятор</a></li>
     </ul>
     <div class="container">
         <div class="col-md-12">

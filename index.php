@@ -12,16 +12,17 @@ error_reporting(E_ALL);
     <ul class="nav nav-tabs">
         <li role="presentation" class="active"><a href="#">Главная</a></li>
         <li role="presentation"><a href="sum.php">Калькулятор</a></li>
+        <li role="presentation"><a href="calculator.php">Продвинутый калькулятор</a></li>
     </ul>
     <div class="container">
         <div class="col-md-12">
             <h1>Урок 4. Запросы HTTP, параметры URL и формы HTML</h1>
-            <pre><h2>Пример использования GET</h2></pre>
+            <pre style="font-size: x-large">Пример использования GET</pre>
             <h3>Галерея</h3>
             <?php
             for($i = 1; $i <= 4; $i++)
             {
-                echo "<a href = photo.php?id=$i target=\"_blank\">Фото №$i</a><br/>";
+                echo "<a href = photo.php?id=$i>Фото №$i</a><br/>";
             }
             ?>
         </div>

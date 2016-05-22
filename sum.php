@@ -41,6 +41,7 @@ if(isset($_POST['a']) && isset($_POST['b']))
 <ul class="nav nav-tabs">
     <li role="presentation"><a href="index.php">Главная</a></li>
     <li role="presentation" class="active"><a href="#">Калькулятор</a></li>
+    <li role="presentation"><a href="calculator.php">Продвинутый калькулятор</a></li>
 </ul>
 <div class="container">
     <div class="col-md-12">
