@@ -6,7 +6,7 @@
 </head>
 <?php
 error_reporting(E_ALL);
-$option_array=[1=>"+",2=>"-",3=>"*",4=>"/"];
+$operator_array=[1=>"+",2=>"-",3=>"*",4=>"/"];
 define('ERROR_DIVISION_BY_ZERO',"zero" );
 $a="";
 $b="";
@@ -36,16 +36,18 @@ if(isset($_POST['a']) && isset($_POST['b']))
         else $result = $a / $b;
     }
 }
+//else $result="Введите оба числа";
 ?>
 <body>
-<ul class="nav nav-tabs">
-    <li role="presentation"><a href="index.php">Главная</a></li>
-    <li role="presentation" class="active"><a href="#">Калькулятор</a></li>
-    <li role="presentation"><a href="calculator.php">Продвинутый калькулятор</a></li>
-</ul>
 <div class="container">
     <div class="col-md-12">
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a href="index.php">Главная</a></li>
+            <li role="presentation" class="active"><a href="#">Калькулятор</a></li>
+            <li role="presentation"><a href="calculator.php">Продвинутый калькулятор</a></li>
+        </ul>
         <form method="post">
+        <fieldset><legend>Калькулятор</legend>
         <table>
             <tr>
                 <td><label for="first_number">Первое число</label></td>
@@ -61,9 +63,9 @@ if(isset($_POST['a']) && isset($_POST['b']))
                         {
                             if ($i==$_POST['operator'])
                             {
-                                echo "<option selected value=\"$i\">$option_array[$i]</option>";
+                                echo "<option selected value=\"$i\">$operator_array[$i]</option>";
                             }
-                            else echo "<option value=\"$i\">$option_array[$i]</option>";
+                            else echo "<option value=\"$i\">$operator_array[$i]</option>";
                         }
                         ?>
                     </select>
@@ -74,10 +76,11 @@ if(isset($_POST['a']) && isset($_POST['b']))
             <tr>
                 <td colspan="3"><?php
                     if ($result===ERROR_DIVISION_BY_ZERO) echo "Некорректный знаменатель";
-                    else echo "<strong>Реузьтат: </strong>$result";
+                    else echo "<strong>Реузьтат: $result</strong>";
                     ?></td>
             </tr>
         </table>
+        </fieldset>
         </form>
     </div>
 </div>
