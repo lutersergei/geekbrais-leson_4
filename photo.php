@@ -11,13 +11,13 @@ $image_description=[1 => "Мост днем", 2 => "Мост ночью",3 => "�
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <ul class="nav nav-tabs">
-        <li role="presentation"><a href="index.php">Главная</a></li>
-        <li role="presentation"><a href="sum.php">Калькулятор</a></li>
-        <li role="presentation"><a href="calculator.php">Продвинутый калькулятор</a></li>
-    </ul>
     <div class="container">
         <div class="col-md-12">
+            <ul class="nav nav-tabs">
+                <li role="presentation"><a href="index.php">Главная</a></li>
+                <li role="presentation"><a href="sum.php">Калькулятор</a></li>
+                <li role="presentation"><a href="calculator.php">Продвинутый калькулятор</a></li>
+            </ul>
             <a href="img/<?php echo $id;?>.jpg" target="_blank"><img src="img/<?php echo $id;?>.jpg" alt="photo_<?php echo $id;?>" width="600px"></a>
             <h2><?php echo $image_description[$id] ?></h2>
         </div>
