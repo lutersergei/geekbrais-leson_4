@@ -49,12 +49,12 @@ if (isset($_POST['operator']) && isset($_POST['a']) && isset($_POST['b']))
           <li role="presentation" class="active"><a href="calculator.php">Продвинутый калькулятор</a></li>
       </ul>
     <form method="post">
-      <fieldset><legend>Продвинутый калькулятор</legend>
+      <fieldset><legend style="font-size: 35px">Продвинутый калькулятор</legend>
         <table>
             <tr>
-                <td><input type="text" name="a" id="first_number" placeholder="Введите первое число" value="<?php echo $a ?>"/></td>
+                <td><input type="text" class="form-control" name="a" id="first_number" placeholder="Введите первое число" value="<?php echo $a ?>"/></td>
                 <td style="min-width: 30px; padding: 0 10px"><?php echo $operator?></td>
-                <td><input type="text" name="b" id="second_number" placeholder="Введите второе число" value="<?php echo $b ?>"/></td>
+                <td><input type="text" class="form-control" name="b" id="second_number" placeholder="Введите второе число" value="<?php echo $b ?>"/></td>
                 <td style="padding: 0 10px"> = </td>
                 <td><?php
                     if ($result===ERROR_DIVISION_BY_ZERO) echo "Некорректный знаменатель";
@@ -65,7 +65,7 @@ if (isset($_POST['operator']) && isset($_POST['a']) && isset($_POST['b']))
                 <td><?php
                     for ($i=1; $i<=4; $i++)
                     {
-                        echo "<input type=\"submit\" value=\"$operator_array[$i]\" name=\"operator\" />";
+                        echo "<input style=\"margin-top: 10px; margin-right: 5px\" class=\"btn btn-default\" type=\"submit\" value=\"$operator_array[$i]\" name=\"operator\" />";
                     }
                     ?></td>
                 <td></td>

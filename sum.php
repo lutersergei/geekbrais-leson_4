@@ -51,7 +51,7 @@ if(isset($_POST['a']) && isset($_POST['b']))
             <li role="presentation"><a href="calculator.php">Продвинутый калькулятор</a></li>
         </ul>
         <form method="post">
-        <fieldset><legend>Калькулятор</legend>
+        <fieldset><legend style="font-size: 35px">Калькулятор</legend>
         <table>
             <tr>
                 <td><label for="first_number">Первое число</label></td>
@@ -61,7 +61,7 @@ if(isset($_POST['a']) && isset($_POST['b']))
             </tr>
             <tr>
                 <td><input type="text" class="form-control" name="a" id="first_number"  placeholder="Введите первое число" value="<?php if ($a!==false)echo $a ?>"/></td>
-                <td><select name="operator" id="operator" style="margin: 0 10px">
+                <td><select class="form-control" name="operator" id="operator" style="margin: 0 5px">
                         <?php
                         for ($i=1; $i<=4; $i++)
                         {
@@ -79,8 +79,8 @@ if(isset($_POST['a']) && isset($_POST['b']))
             </tr>
             <tr>
                 <td colspan="3"><?php
-                    if ($result===ERROR_DIVISION_BY_ZERO) echo "Некорректный знаменатель";
-                    else echo "<strong>Реузьтат: $result</strong>";
+                    if ($result===ERROR_DIVISION_BY_ZERO) echo "<p style=\"padding: 15px\"  class=\"bg-danger\">Некорректный знаменатель</p>";
+                    else echo "<p style=\"padding: 15px\" class=\"bg-info\">Реузьтат: $result</p>";
                     ?></td>
             </tr>
         </table>
