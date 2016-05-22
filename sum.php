@@ -7,8 +7,12 @@
 <?php
 error_reporting(E_ALL);
 var_dump($_POST);
-$operator_array=[1=>"+",2=>"-",3=>"*",4=>"/"];
 define('ERROR_DIVISION_BY_ZERO',"zero" );
+define('SUMMA',1 );
+define('DIFFERENCE',2 );
+define('MULTIPLIC',3 );
+define('DIVISION',4 );
+$operator_array=[SUMMA=>"+",DIFFERENCE=>"-",MULTIPLIC=>"*",DIVISION=>"/"];
 $a=false;
 $b=false;
 $result = "";
@@ -16,19 +20,19 @@ if(isset($_POST['a']) && isset($_POST['b']))
 {
     $a=(int)$_POST['a'];
     $b=(int)$_POST['b'];
-    if ($_POST['operator']=='1')
+    if ($_POST['operator']==SUMMA)
     {
         $result = $a + $b;
     }
-    elseif ($_POST['operator']=='2')
+    elseif ($_POST['operator']==DIFFERENCE)
     {
         $result = $a - $b;
     }
-    elseif ($_POST['operator']=='3')
+    elseif ($_POST['operator']==MULTIPLIC)
     {
         $result = $a * $b;
     }
-    elseif ($_POST['operator']=='4')
+    elseif ($_POST['operator']==DIVISION)
     {
         if ($b==0)
         {
