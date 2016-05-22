@@ -12,7 +12,8 @@ error_reporting(E_ALL);
     <div class="container">
         <div class="col-md-12">
             <h1>Урок 4. Запросы HTTP, параметры URL и формы HTML</h1>
-            <h2>Галерея</h2>
+            <pre><h2>Пример использования GET</h2></pre>
+            <h3>Галерея</h3>
             <?php
             for($i = 1; $i <= 4; $i++)
             {
