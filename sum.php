@@ -1,18 +1,50 @@
 <?php
+//$operator_array=[1 => ""];
+$result = "";
 if(isset($_POST['a']) && isset($_POST['b']))
-    $result = $_POST['a'] + $_POST['b'];
-else
-    $result = "";
+{
+    $a=(int)$_POST['a'];
+    $b=(int)$_POST['b'];
+    if ($_POST['operator']=='1')
+    {
+        $result = $a + $b;
+    }
+    elseif ($_POST['operator']=='2')
+    {
+        $result = $a - $b;
+    }
+    elseif ($_POST['operator']=='3')
+    {
+        $result = $a * $b;
+    }
+    elseif ($_POST['operator']=='4')
+    {
+        if ($b==0)
+        {
+            $result="Деление на ноль невозможно";
+        }
+        else $result = $a / $b;
+    }
+}
 ?>
 <html>
 <head>
-    <title>Галерея изображений</title>
+    <meta charset="UTF-8">
+    <title>Калькулятор</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <form method="post">
-    <input type="text" name="a" />
-    +
-    <input type="text" name="b" />
+    <label for="first_number">Первое число</label>
+    <input type="text" name="a" id="first_number"/>
+    <select name="operator" id="operator">
+        <option value="1">+</option>
+        <option value="2">-</option>
+        <option value="3">*</option>
+        <option value="4">/</option>
+    </select>
+    <label for="second_number">Второе число</label>
+    <input type="text" name="b" id="second_number" />
     <input type="submit" value="=" />
     <?php echo $result; ?>
 </form>
