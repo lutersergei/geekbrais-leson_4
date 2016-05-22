@@ -60,8 +60,8 @@ if(isset($_POST['a']) && isset($_POST['b']))
                 <td></td>
             </tr>
             <tr>
-                <td><input type="text" name="a" id="first_number" placeholder="Введите первое число" value="<?php if ($a!==false)echo $a ?>"/></td>
-                <td><select name="operator" id="operator">
+                <td><input type="text" class="form-control" name="a" id="first_number"  placeholder="Введите первое число" value="<?php if ($a!==false)echo $a ?>"/></td>
+                <td><select name="operator" id="operator" style="margin: 0 10px">
                         <?php
                         for ($i=1; $i<=4; $i++)
                         {
@@ -74,8 +74,8 @@ if(isset($_POST['a']) && isset($_POST['b']))
                         ?>
                     </select>
                 </td>
-                <td><input type="text" name="b" id="second_number" placeholder="Введите второе число" value="<?php if ($b!==false) echo $b ?>"/></td>
-                <td><input type="submit" value="=" /></td>
+                <td><input type="text" class="form-control" name="b" id="second_number" style="margin:10px;" placeholder="Введите второе число" value="<?php if ($b!==false) echo $b ?>"/></td>
+                <td><input type="submit" style="margin-left:15px" class="btn btn-primary" value="=" /></td>
             </tr>
             <tr>
                 <td colspan="3"><?php
