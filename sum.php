@@ -1,5 +1,14 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+</head>
 <?php
-//$operator_array=[1 => ""];
+error_reporting(E_ALL);
+define('ERROR_DIVISION_BY_ZERO',"zero" );
+$a="";
+$b="";
 $result = "";
 if(isset($_POST['a']) && isset($_POST['b']))
 {
@@ -21,22 +30,16 @@ if(isset($_POST['a']) && isset($_POST['b']))
     {
         if ($b==0)
         {
-            $result="Деление на ноль невозможно";
+            $result=ERROR_DIVISION_BY_ZERO;
         }
         else $result = $a / $b;
     }
 }
 ?>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Калькулятор</title>
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-</head>
 <body>
 <form method="post">
     <label for="first_number">Первое число</label>
-    <input type="text" name="a" id="first_number"/>
+    <input type="text" name="a" id="first_number" value="<?php echo $a ?>"/>
     <select name="operator" id="operator">
         <option value="1">+</option>
         <option value="2">-</option>
@@ -44,9 +47,12 @@ if(isset($_POST['a']) && isset($_POST['b']))
         <option value="4">/</option>
     </select>
     <label for="second_number">Второе число</label>
-    <input type="text" name="b" id="second_number" />
+    <input type="text" name="b" id="second_number" value="<?php echo $b ?>"/>
     <input type="submit" value="=" />
-    <?php echo $result; ?>
+    <?php
+    if ($result===ERROR_DIVISION_BY_ZERO) echo "Некорректный знаменатель";
+    else echo $result;
+    ?>
 </form>
 </body>
 </html>
