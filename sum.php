@@ -38,28 +38,48 @@ if(isset($_POST['a']) && isset($_POST['b']))
 }
 ?>
 <body>
-<form method="post">
-    <label for="first_number">Первое число</label>
-    <input type="text" name="a" id="first_number" value="<?php echo $a ?>"/>
-    <select name="operator" id="operator">
-        <?php
-        for ($i=1; $i<5; $i++)
-        {
-            if ($i==$_POST['operator'])
+<ul class="nav nav-tabs">
+    <li role="presentation"><a href="index.php">Главная</a></li>
+    <li role="presentation" class="active"><a href="#">Калькулятор</a></li>
+</ul>
+<div class="container">
+    <div class="col-md-12">
+        <form method="post">
+        <table>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <label for="first_number">Первое число</label>
+        <input type="text" name="a" id="first_number" placeholder="Введите первое число" value="<?php echo $a ?>"/>
+        <select name="operator" id="operator">
+            <?php
+            for ($i=1; $i<5; $i++)
             {
-                echo "<option selected value=\"$i\">$option_array[$i]</option>";
+                if ($i==$_POST['operator'])
+                {
+                    echo "<option selected value=\"$i\">$option_array[$i]</option>";
+                }
+                else echo "<option value=\"$i\">$option_array[$i]</option>";
             }
-            else echo "<option value=\"$i\">$option_array[$i]</option>";
-        }
+            ?>
+        </select>
+        <label for="second_number">Второе число</label>
+        <input type="text" name="b" id="second_number" placeholder="Введите второе число" value="<?php echo $b ?>"/>
+        <input type="submit" value="=" />
+        <?php
+        if ($result===ERROR_DIVISION_BY_ZERO) echo "Некорректный знаменатель";
+        else echo $result;
         ?>
-    </select>
-    <label for="second_number">Второе число</label>
-    <input type="text" name="b" id="second_number" value="<?php echo $b ?>"/>
-    <input type="submit" value="=" />
-    <?php
-    if ($result===ERROR_DIVISION_BY_ZERO) echo "Некорректный знаменатель";
-    else echo $result;
-    ?>
-</form>
+        </form>
+    </div>
+</div>
 </body>
 </html>

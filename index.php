@@ -9,6 +9,10 @@ error_reporting(E_ALL);
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="#">Главная</a></li>
+        <li role="presentation"><a href="sum.php">Калькулятор</a></li>
+    </ul>
     <div class="container">
         <div class="col-md-12">
             <h1>Урок 4. Запросы HTTP, параметры URL и формы HTML</h1>
