@@ -6,7 +6,6 @@
 </head>
 <?php
 error_reporting(E_ALL);
-var_dump($_POST);
 define('ERROR_DIVISION_BY_ZERO',"zero" );
 define('SUMMA',1 );
 define('DIFFERENCE',2 );
@@ -18,8 +17,8 @@ $b=false;
 $result = "";
 if(isset($_POST['a']) && isset($_POST['b']))
 {
-    $a=(int)$_POST['a'];
-    $b=(int)$_POST['b'];
+    $a=$_POST['a'];
+    $b=$_POST['b'];
     if ($_POST['operator']==SUMMA)
     {
         $result = $a + $b;
@@ -61,7 +60,7 @@ if(isset($_POST['a']) && isset($_POST['b']))
                 <td></td>
             </tr>
             <tr>
-                <td><input type="text" name="a" id="first_number" placeholder="Введите первое число" value="<?php echo $a ?>"/></td>
+                <td><input type="text" name="a" id="first_number" placeholder="Введите первое число" value="<?php if ($a!==false)echo $a ?>"/></td>
                 <td><select name="operator" id="operator">
                         <?php
                         for ($i=1; $i<=4; $i++)
@@ -75,7 +74,7 @@ if(isset($_POST['a']) && isset($_POST['b']))
                         ?>
                     </select>
                 </td>
-                <td><input type="text" name="b" id="second_number" placeholder="Введите второе число" value="<?php echo $b ?>"/></td>
+                <td><input type="text" name="b" id="second_number" placeholder="Введите второе число" value="<?php if ($b!==false) echo $b ?>"/></td>
                 <td><input type="submit" value="=" /></td>
             </tr>
             <tr>

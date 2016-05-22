@@ -5,12 +5,11 @@ $a="";
 $b="";
 $result = "";
 $operator_array=[1=>"+",2=>"-",3=>"*",4=>"/"];
-var_dump($_POST);
 $operator="";
 if (isset($_POST['operator']) && isset($_POST['a']) && isset($_POST['b']))
 {
-    $a=(int)$_POST['a'];
-    $b=(int)$_POST['b'];
+    $a=$_POST['a'];
+    $b=$_POST['b'];
     $operator=$_POST['operator'];
     if ($_POST['operator']=='+')
     {
