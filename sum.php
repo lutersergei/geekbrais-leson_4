@@ -19,28 +19,34 @@ $b=false;
 $result = "";
 if (count($_POST))                                      //Проверка на наличие содержимого в запросе POST(признак обработки формы)
 {
-    if (isset($_POST['a']) && isset($_POST['b'])) {     //Проверяем, переданы ли значения аргументов
+    if (isset($_POST['a']) && isset($_POST['b']))
+    {                                                    //Проверяем, переданы ли значения аргументов
         $a = $_POST['a'];
         $b = $_POST['b'];
     }
-    if (isset($_POST['operator'])) {                    //Проверяем, передано ли значение оператора
-        $operator = (int)$_POST['operator'];
-    } else $operator = false;
-    if (($operator !== false) && (isset($operator_array[$operator])))   //Проверяем наличие оператора в массиве операторов
+}
+function MathOperation ($a, $b)
+{
+    if (isset($_POST['operator']))                         //Проверяем, передано ли значение оператора
     {
         if ($_POST['operator'] == SUMMA) {
-            $result = $a + $b;
-        } elseif ($_POST['operator'] == DIFFERENCE) {
-            $result = $a - $b;
-        } elseif ($_POST['operator'] == MULTIPLIC) {
-            $result = $a * $b;
-        } elseif ($_POST['operator'] == DIVISION)
+            return $a + $b;
+        }
+        elseif ($_POST['operator'] == DIFFERENCE) {
+            return $a - $b;
+        }
+        elseif ($_POST['operator'] == MULTIPLIC) {
+            return  $a * $b;
+        }
+        elseif ($_POST['operator'] == DIVISION)
         {
             if ($b == 0) {
-                $result = ERROR_DIVISION_BY_ZERO;                       //Обработка деления на ноль
-            } else $result = $a / $b;
+                return ERROR_DIVISION_BY_ZERO;                       //Обработка деления на ноль
+            } else return $a / $b;
         }
+        else return "";
     }
+    else return "";
 }
 ?>
 <body>
@@ -52,40 +58,44 @@ if (count($_POST))                                      //Проверка на 
             <li role="presentation"><a href="calculator.php">Продвинутый калькулятор</a></li>
         </ul>
         <form method="post">
-        <fieldset><legend style="font-size: 35px">Калькулятор</legend>
-        <table>
-            <tr>
-                <td><label for="first_number">Первое число</label></td>
-                <td></td>
-                <td><label for="second_number">Второе число</label></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td><input type="number" class="form-control" name="a" id="first_number"  placeholder="Введите первое число" value="<?php if ($a!==false)echo $a ?>"/></td>
-                <td><select class="form-control" name="operator" id="operator" style="margin: 0 5px">
-                        <?php
-                        for ($i=1; $i<=4; $i++)
-                        {
-                            if ($i==$_POST['operator'])
+            <fieldset><legend style="font-size: 35px">Калькулятор</legend>
+                <table>
+                    <tr>
+                        <td><label for="first_number">Первое число</label></td>
+                        <td></td>
+                        <td><label for="second_number">Второе число</label></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><input type="number" class="form-control" name="a" id="first_number"  placeholder="Введите первое число" value="<?php if ($a!==false)echo $a ?>"/></td>
+                        <td><select class="form-control" name="operator" id="operator" style="margin: 0 5px">
+                                <?php
+                                for ($i=1; $i<=4; $i++)
+                                {
+                                    if ($i==$_POST['operator'])
+                                    {
+                                        echo "<option selected value=\"$i\">$operator_array[$i]</option>";
+                                    }
+                                    else echo "<option value=\"$i\">$operator_array[$i]</option>";
+                                }
+                                ?>
+                            </select>
+                        </td>
+                        <td><input type="number" class="form-control" name="b" id="second_number" style="margin:10px;" placeholder="Введите второе число" value="<?php if ($b!==false) echo $b ?>"/></td>
+                        <td><input type="submit" style="margin-left:15px" class="btn btn-primary" value="=" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><?php
+                            if (MathOperation($a, $b)===ERROR_DIVISION_BY_ZERO) echo "<p style=\"padding: 15px\"  class=\"bg-danger\">Некорректный знаменатель</p>";
+                            else
                             {
-                                echo "<option selected value=\"$i\">$operator_array[$i]</option>";
+                                $result=MathOperation($a, $b);
+                                echo "<p style=\"padding: 15px\" class=\"bg-info\">Реузьтат: $result</p>";
                             }
-                            else echo "<option value=\"$i\">$operator_array[$i]</option>";
-                        }
-                        ?>
-                    </select>
-                </td>
-                <td><input type="number" class="form-control" name="b" id="second_number" style="margin:10px;" placeholder="Введите второе число" value="<?php if ($b!==false) echo $b ?>"/></td>
-                <td><input type="submit" style="margin-left:15px" class="btn btn-primary" value="=" /></td>
-            </tr>
-            <tr>
-                <td colspan="3"><?php
-                    if ($result===ERROR_DIVISION_BY_ZERO) echo "<p style=\"padding: 15px\"  class=\"bg-danger\">Некорректный знаменатель</p>";
-                    else echo "<p style=\"padding: 15px\" class=\"bg-info\">Реузьтат: $result</p>";
-                    ?></td>
-            </tr>
-        </table>
-        </fieldset>
+                            ?></td>
+                    </tr>
+                </table>
+            </fieldset>
         </form>
     </div>
 </div>
