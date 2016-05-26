@@ -8,16 +8,16 @@
 error_reporting(E_ALL);
 /*Инициализирование констант*/
 define('ERROR_DIVISION_BY_ZERO',"zero" );
-define('SUMMA','+' );
-define('DIFFERENCE','-' );
-define('MULTIPLIC','*' );
-define('DIVISION','/' );
-$operator_array=[1=> SUMMA, 2=> DIFFERENCE, 3=> MULTIPLIC, 4=>DIVISION];  //Массив операторов для использования в select в цикле
+define('SUMMA',1 );
+define('DIFFERENCE',2 );
+define('MULTIPLIC',3 );
+define('DIVISION',4 );
+$operator_array=[SUMMA=>"+",DIFFERENCE=>"-",MULTIPLIC=>"*",DIVISION=>"/"];  //Массив операторов для использования в select в цикле
 /*Инициализирование переменных*/
 $a=false;
 $b=false;
 $result = "";
-if (count($_POST))                                       //Проверка на наличие содержимого в запросе POST(признак обработки формы)
+if (count($_POST))                                      //Проверка на наличие содержимого в запросе POST(признак обработки формы)
 {
     if (isset($_POST['a']) && isset($_POST['b']))
     {                                                    //Проверяем, переданы ли значения аргументов
@@ -27,7 +27,7 @@ if (count($_POST))                                       //Проверка на
 }
 function MathOperation ($a, $b)
 {
-    if (isset($_POST['operator']))                       //Проверяем, передано ли значение оператора
+    if (isset($_POST['operator']))                         //Проверяем, передано ли значение оператора
     {
         if ($_POST['operator'] == SUMMA) {
             return $a + $b;
@@ -41,7 +41,7 @@ function MathOperation ($a, $b)
         elseif ($_POST['operator'] == DIVISION)
         {
             if ($b == 0) {
-                return ERROR_DIVISION_BY_ZERO;              //Обработка деления на ноль
+                return ERROR_DIVISION_BY_ZERO;                       //Обработка деления на ноль
             } else return $a / $b;
         }
         else return "";
@@ -70,13 +70,13 @@ function MathOperation ($a, $b)
                         <td><input type="number" class="form-control" name="a" id="first_number"  placeholder="Введите первое число" value="<?php if ($a!==false)echo $a ?>"/></td>
                         <td><select class="form-control" name="operator" id="operator" style="margin: 0 5px">
                                 <?php
-                                for ($i=1; $i<=4; $i++)         //Цикл подстановки значений $operator_array в select->option
+                                for ($i=1; $i<=4; $i++)
                                 {
-                                    if ($operator_array[$i]==$_POST['operator'])        //Option выбранный в предыдущем подсчете получает атрибут selected
+                                    if ($i==$_POST['operator'])
                                     {
-                                        echo "<option selected value=\"$operator_array[$i]\">$operator_array[$i]</option>";
+                                        echo "<option selected value=\"$i\">$operator_array[$i]</option>";
                                     }
-                                    else echo "<option value=\"$operator_array[$i]\">$operator_array[$i]</option>";
+                                    else echo "<option value=\"$i\">$operator_array[$i]</option>";
                                 }
                                 ?>
                             </select>
